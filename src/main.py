@@ -10,6 +10,18 @@ import time
 ALPHA = 0.5
 MOVE_THRESHOLD = 2
 
+def is_move_gesture(landmarks):
+    try:
+        index_extended = landmarks.landmark[8].y < landmarks.landmark[6].y
+        middle_folded = landmarks.landmark[12].y > landmarks.landmark[10].y
+        ring_folded = landmarks.landmark[16].y > landmarks.landmark[14].y
+        pinky_folded = landmarks.landmark[20].y > landmarks.landmark[18].y
+        
+        return index_extended and middle_folded and ring_folded and pinky_folded
+    
+    except (AttributeError, IndexError):
+        return False
+
 def run_control_loop():
     """Capture frames, track hand, move mouse, detect clicks, and display."""
     screen_width, screen_height = pyautogui.size()
@@ -28,7 +40,10 @@ def run_control_loop():
             frame = cv2.flip(frame, 1)
             hand_landmarks = hand_tracker.detect(frame)
 
-            if hand_landmarks:
+            # Draw landmarks on the frame
+            hand_tracker.draw_landmarks(frame, hand_landmarks)
+
+            if hand_landmarks and is_move_gesture(hand_landmarks):
                 # Compute target mouse position
                 index_tip = hand_landmarks.landmark[8]
                 target_x = int(index_tip.x * screen_width)
@@ -37,14 +52,12 @@ def run_control_loop():
                 # Smooth mouse movement
                 mouse_controller.update(target_x, target_y)
 
-                # Draw landmarks on the frame
-                hand_tracker.draw_landmarks(frame, hand_landmarks)
-
                 # Detect and perform click if gesture is present
                 click_detector.detect_and_click(hand_landmarks)
 
             # Show the video feed
             cv2.imshow('Optimized Control (Esc to Exit)', frame)
+
 
             # Exit on ESC key
             if cv2.waitKey(1) & 0xFF == 27:
