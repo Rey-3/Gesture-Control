@@ -2,9 +2,14 @@ from video_stream import VideoStream
 from hand_tracker import HandTracker
 from mouse_controller import MouseController
 from click_detector import ClickDetector
+from double_click_detector import DoubleClickDetector
 import cv2
 import pyautogui
 import time
+#---------------------------------------------------------------------------
+# 20/04/2025 updated by Zhi Yang (added double click detection)
+#---------------------------------------------------------------------------
+
 
 # Constants
 ALPHA = 0.5
@@ -30,6 +35,7 @@ def run_control_loop():
     hand_tracker = HandTracker()
     mouse_controller = MouseController(alpha=ALPHA, threshold=MOVE_THRESHOLD)
     click_detector = ClickDetector()
+    double_click_detector = DoubleClickDetector()
 
     try:
         while True:
@@ -54,10 +60,12 @@ def run_control_loop():
 
                 # Detect and perform click if gesture is present
                 click_detector.detect_and_click(hand_landmarks)
+                
+                # Detect and perform double-click if gesture is present
+                double_click_detector.detect_and_double_click(hand_landmarks)
 
             # Show the video feed
             cv2.imshow('Optimized Control (Esc to Exit)', frame)
-
 
             # Exit on ESC key
             if cv2.waitKey(1) & 0xFF == 27:
