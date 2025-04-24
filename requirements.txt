@@ -1,4 +1,4 @@
-python >=3.7 <=3.10
+#python >=3.7 <=3.10
 opencv-python>=4.5.0
 mediapipe>=0.8.0
 pyautogui>=0.9.50
