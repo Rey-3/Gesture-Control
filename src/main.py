@@ -7,7 +7,7 @@ import cv2
 import pyautogui
 import time
 #---------------------------------------------------------------------------
-# 20/04/2025 updated by Zhi Yang (added double click detection)
+# 20/04/2025 V0.3 updated by Zhi Yang (added double click detection)
 #---------------------------------------------------------------------------
 
 
