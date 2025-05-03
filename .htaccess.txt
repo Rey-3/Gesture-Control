@@ -1,0 +1,9 @@
+RewriteEngine On
+
+# Make homepage.php the default
+RewriteRule ^$ homepage.php [L]
+
+# Hide .php extensions
+RewriteCond %{REQUEST_FILENAME} !-d
+RewriteCond %{REQUEST_FILENAME}\.php -f
+RewriteRule ^(.*)$ $1.php [L]
