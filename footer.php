@@ -77,9 +77,9 @@
         <!-- Contact Info -->
         <div class="col-md-4 mb-4">
           <h6 class="text-uppercase fw-bold mb-3">Contact Us</h6>
-          <p class="mb-1"><i class="bi bi-geo-alt-fill me-2"></i>1234 Gesture Lane, Tech City</p>
+          <p class="mb-1"><i class="bi bi-geo-alt-fill me-2"></i>Penang, Malaysia</p>
           <p class="mb-1"><i class="bi bi-envelope-fill me-2"></i>support@gesturo.com</p>
-          <p><i class="bi bi-telephone-fill me-2"></i>+1 (555) 123‑4567</p>
+          <p><i class="bi bi-telephone-fill me-2"></i>+60 (555) 123‑4567</p>
         </div>
       </div>
 
