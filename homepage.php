@@ -238,8 +238,8 @@ $gestures = 1200000;
 
         <div class="col-md-4" data-aos="fade-up" data-aos-duration="1000" data-aos-delay="400">
           <div class="testimonial-card h-100">
-            <img src="assets/rey_icon.jpg" alt="Michael Berillo" class="testimonial-img" />
-            <div class="testimonial-name">-</div>
+            <img src="assets/XXD.jpeg" alt="Michael Berillo" class="testimonial-img" />
+            <div class="testimonial-name">XXD</div>
             <p class="testimonial-text">"The seamless integration of gesture controls with our platform has transformed
               how users interact with games and
               devices. Gesturo brings accessibility and innovation together in the most intuitive way."</p>
